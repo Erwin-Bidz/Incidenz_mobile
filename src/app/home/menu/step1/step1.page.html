@@ -1,13 +1,72 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Signaler un incident</ion-title>
+    <ion-title>
+      Signaler un incident
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">step1</ion-title>
+      <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div class="center">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-card class="center">
+          <ion-card-header><ion-card-title>Niveau de dangérosité</ion-card-title></ion-card-header>
+          <ion-card-content><p>Veuillez indiquer le niveau de dangérosité</p></ion-card-content>
+        </ion-card>
+      </ion-item>
+      
+      <ion-item>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="assets/batiment-gouvernemental.png" alt="">
+          </ion-avatar>
+          <ion-label>
+            Entité concernée
+          </ion-label>
+        </ion-item>
+      </ion-item>
+
+      <ion-item>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="assets/appareil-photo-numerique.png" alt="">
+          </ion-avatar>
+          <ion-label>
+            Photo (Opérationnel)
+          </ion-label>
+        </ion-item>
+      </ion-item>
+
+      <ion-item>
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="assets/enregistreur-vocal.png" alt="">
+          </ion-avatar>
+          <ion-label>
+            Note vocale (Opérationnel)
+          </ion-label>
+        </ion-item>
+      </ion-item>
+
+    </ion-list>
+    
+  </div>
+
+  <div class="center">
+    <ion-button color="bouton" size="large" shape="round" expand="block" bottom="200">Signaler</ion-button>
+  </div>
+
 </ion-content>
+
+<ion-footer>
+  <p class="footer_center">Copyright © Production ISI 2023-2024</p>
+</ion-footer>
