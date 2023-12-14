@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Signaler un incident
+      Liste des incidents
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -21,22 +21,29 @@
     <ion-list class="card_center">
 
       <ion-item>
-        <ion-card class="card_center">
-          <ion-card-header><ion-card-title>Niveau de dangérosité</ion-card-title></ion-card-header>
-          <ion-card-content><p>Veuillez indiquer le niveau de dangérosité</p></ion-card-content>
+        <ion-card class="center" expand="block">
+          <ion-card-header><ion-card-title>Accident de la route</ion-card-title></ion-card-header>
+          <ion-card-content><p>(Pompiers), terminé</p></ion-card-content>
         </ion-card>
       </ion-item>
 
       <ion-item>
+        <ion-card class="center" expand="block">
+          <ion-card-header><ion-card-title>Chute Poteau électrique</ion-card-title></ion-card-header>
+          <ion-card-content><p>(ENEO), pris en compte</p></ion-card-content>
+        </ion-card>
+      </ion-item>
+
+      <!--ion-item>
         <ion-card class="center">
           <ion-card-header></ion-card-header>
           <ion-card-content class="footer_center">
-            <p><img src="assets/appareil-photo-numerique.png" alt="" width="100"></p>
-            <BLOCKQUOTE><p>Ajouter une photo</p></BLOCKQUOTE>
+            <!--p><img src="assets/appareil-photo-numerique.png" alt="" width="100"></p>
+            <BLOCKQUOTE><p>Ajouter une description</p></BLOCKQUOTE>
             
           </ion-card-content>
         </ion-card>
-      </ion-item>
+      </ion-item-->
       <!--div>
         <img [src]="image" alt="">
       </div-->
@@ -64,23 +71,8 @@
         </ion-item>
       </ion-item-->
 
-      <ion-item>
-        <ion-item>
-          <ion-avatar slot="start"  class="footer_center">
-            <img src="assets/enregistreur-vocal.png" alt="">
-          </ion-avatar>
-          <ion-label>
-            Note vocale (Optionnel)
-          </ion-label>
-        </ion-item>
-      </ion-item>
-
     </ion-list>
     
-  </div>
-
-  <div class="center">
-    <ion-button class="ion-button-fixed" bottom="200" color="bouton" size="large" shape="round" expand="block"><a [routerLink]="['step3']" class="text_in_a">Suivant</a></ion-button>
   </div>
 
 </ion-content>
