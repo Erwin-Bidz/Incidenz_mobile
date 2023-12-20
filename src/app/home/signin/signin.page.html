@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Connexion</ion-title>
+    <ion-title>Inscription</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,6 +11,22 @@
   <ion-item>
     <ion-label position="floating">Numéro de Téléphone</ion-label>
     <ion-input type="tel"></ion-input>
+  </ion-item>
+
+  
+  <ion-item>
+    <ion-label position="floating">Nom</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Prénom</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Adresse e-mail</ion-label>
+    <ion-input type="email"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -25,8 +41,8 @@
   </ion-item>
 
   <ion-card></ion-card>
-  <ion-label>Nouveau compte? <a [routerLink]="['../signin']">Inscription</a></ion-label>
+  <ion-label>Compte existant? <a [routerLink]="['../login']">Connexion</a></ion-label>
   <ion-card></ion-card>
-
+  
   <ion-button color="bouton" size="large" shape="round" expand="block"><a [routerLink]="['../menu']" class="text_in_a">Se connecter</a></ion-button>
 </ion-content>
