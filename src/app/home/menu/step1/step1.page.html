@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="header">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Signaler un incident</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">step2</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="center">
+    <ion-list>
+      <ion-item *ngFor="let inc of Incidents" [routerLink]="['step2']">
+        <ion-avatar slot="start">
+        <!--ion-avatar slot="end" pour mettre les images de profil des joueurs à droite-->
+          <img src="{{inc.img}}" alt="">
+        </ion-avatar>
+        <ion-label>
+          <h2><b>{{inc.nom}}</b></h2>
+          <!--p><i>Country: </i>{{P[m].country}}</p>
+          <p><i>Team: </i>{{P[m].team}}</p-->
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <p class="footer_center">Copyright © Production ISI 2023-2024</p>
+</ion-footer>
