@@ -23,7 +23,7 @@ export class MenuPage implements OnInit {
         this.apiService.getUserInfo().subscribe((data: any) => {
           this.user = data; // Stockez les informations de l'utilisateur dans une variable pour les afficher dans le template HTML
           console.log(this.user);
-          this.username = this.user.nom
+          this.username = this.user.nom;
           console.log(this.username);
         });
   }

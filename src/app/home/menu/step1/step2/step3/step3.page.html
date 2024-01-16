@@ -23,20 +23,29 @@
       <ion-item>
         <ion-card class="center">
           <ion-card-header><ion-card-title>Position</ion-card-title></ion-card-header>
-          <ion-card-content><p>Votre position devrait s'afficher ici une fois les services disponibles</p></ion-card-content>
+          <ion-card-content>
+            <p>Votre position devrait s'afficher ici une fois les services disponibles</p>
+            <ion-button (click)="obtenirPosition()">Obtenir Position</ion-button>
+            <p>{{position.long}} {{position.lat}}</p>
+          </ion-card-content>
         </ion-card>
       </ion-item>
 
-      <ion-item>
+      <ion-item class="description">
+        <ion-label position="floating">Description</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <!--ion-item>
         <ion-card class="center">
           <ion-card-header></ion-card-header>
           <ion-card-content class="footer_center">
-            <!--p><img src="assets/appareil-photo-numerique.png" alt="" width="100"></p-->
+            <!--p><img src="assets/appareil-photo-numerique.png" alt="" width="100"></p>
             <BLOCKQUOTE><p>Ajouter une description</p></BLOCKQUOTE>
 
           </ion-card-content>
         </ion-card>
-      </ion-item>
+      </ion-item-->
       <!--div>
         <img [src]="image" alt="">
       </div-->
