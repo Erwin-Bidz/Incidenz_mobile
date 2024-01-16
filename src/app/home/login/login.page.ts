@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import{ AlertController} from'@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginPage implements OnInit {
   token = '';
 
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, public alertController:AlertController) { }
 
   ngOnInit() {
   }
@@ -47,7 +48,9 @@ export class LoginPage implements OnInit {
                   this.token = response.body.token;
                   //localStorage.setItem('token', this.token);
                   console.log(this.token);
+                  this.openDialog();
                   this.router.navigate(['home/menu', { token: this.token }]);
+                  //this.router.navigate(['home/menu']);
               },
               (error) => {
                 if (error.status == 403) {
@@ -60,6 +63,16 @@ export class LoginPage implements OnInit {
             );
     }
 
+  }
+
+  async openDialog() {
+          const alert=await this.alertController.create(
+            {header: 'Authentification réussie',
+            subHeader: '',
+            message: '',
+            buttons: ['Ok']
+          });
+        await alert.present()
   }
 
 

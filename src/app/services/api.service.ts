@@ -12,8 +12,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getUserInfo() {
-      //return this.http.get(this.apiUrl + 'user/info');
       return this.http.get(this.apiUrl + 'users/login/me/');
+      //return this.http.get(this.apiUrl + 'users/login/user/');
   }
 
 }

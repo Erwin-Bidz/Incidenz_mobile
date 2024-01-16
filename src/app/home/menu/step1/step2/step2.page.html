@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Signaler un incident
+      {{typeIncident}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -22,10 +22,17 @@
 
       <ion-item>
         <ion-card class="card_center">
-          <ion-card-header><ion-card-title>Niveau de dangérosité</ion-card-title></ion-card-header>
-          <ion-card-content><p>Veuillez indiquer le niveau de dangérosité</p></ion-card-content>
+          <!--ion-card-header><ion-card-title>Niveau de dangérosité</ion-card-title></ion-card-header-->
+          <ion-card-content>
+            <p>Veuillez indiquer le niveau de dangérosité</p>
+            <ion-range min="1" max="5" step="1" snaps="true" pin="true"  [(ngModel)]="dangerosite">
+              <ion-icon size="small" slot="start" name="star"></ion-icon>
+              <ion-icon size="small" slot="end" name="star"></ion-icon>
+            </ion-range>
+          </ion-card-content>
         </ion-card>
       </ion-item>
+
 
       <ion-item>
         <ion-card class="center">
@@ -33,7 +40,7 @@
           <ion-card-content class="footer_center">
             <p><img src="assets/appareil-photo-numerique.png" alt="" width="100"></p>
             <BLOCKQUOTE><p>Ajouter une photo</p></BLOCKQUOTE>
-            
+
           </ion-card-content>
         </ion-card>
       </ion-item>
@@ -51,18 +58,8 @@
             Entité concernée
           </ion-label>
         </ion-item>
-      </ion-item>
-
-      <ion-item>
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="assets/appareil-photo-numerique.png" alt="">
-          </ion-avatar>
-          <ion-label>
-            Photo (Optionnel)
-          </ion-label>
-        </ion-item>
       </ion-item-->
+
 
       <ion-item>
         <ion-item>
@@ -76,11 +73,11 @@
       </ion-item>
 
     </ion-list>
-    
+
   </div>
 
   <div class="center">
-    <ion-button class="ion-button-fixed" bottom="200" color="bouton" size="large" shape="round" expand="block" [routerLink]="['step3']">Suivant</ion-button>
+    <ion-button (click)="ajoutDesParametres()" class="ion-button-fixed" bottom="200" color="bouton" size="large" shape="round" expand="block" [routerLink]="['step3']">Suivant</ion-button>
   </div>
 
 </ion-content>

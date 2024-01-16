@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">Signaler un incident</ion-title>
+    <ion-title>Signaler un incident</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -29,7 +29,8 @@
 
   <div class="center">
     <ion-list>
-      <ion-item *ngFor="let item of Data" [routerLink]="['step2']">
+      <!--ion-item *ngFor="let item of Data" [routerLink]="['step2']"-->
+      <ion-item *ngFor="let item of Data" (click)="selectedType(item.nom, item.id)">
         <ion-avatar slot="start">
           <img [src]="item.image" alt="none">
         </ion-avatar>

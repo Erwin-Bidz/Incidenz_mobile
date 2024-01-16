@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { IncidentService } from '../../../services/incident.service';
 
 @Component({
   selector: 'app-step1',
@@ -10,7 +12,7 @@ export class Step1Page implements OnInit {
 
   Data : any
 
-  constructor(public  http: HttpClient) {
+  constructor(public  http: HttpClient, private incidentService: IncidentService, private router: Router) {
     this.readAPI('http://localhost:8080/api/typeIncidents/').subscribe((data) =>{ this.Data = data; console.log(data);});
   }
 
@@ -19,7 +21,13 @@ export class Step1Page implements OnInit {
 
   readAPI(URL: string){
       return this.http.get(URL);
-   }
+  }
+
+  selectedType(incident: string, id: number) {
+         this.incidentService.setItem('incidentType', incident);
+         this.incidentService.setItem('newIncident', id);
+         this.router.navigate(['home/menu/step1/step2']);
+  }
 
 
   incident1 = {

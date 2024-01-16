@@ -36,47 +36,11 @@
 
       <ion-item  *ngFor="let incident of history">
         <ion-card class="center" expand="block">
-          <ion-card-header><ion-card-title>{{incident.nom}}</ion-card-title></ion-card-header>
+          <ion-card-header><ion-card-title>{{incident.title}}</ion-card-title></ion-card-header>
           <ion-card-content><p>(ENEO), {{incident.etat}}</p></ion-card-content>
         </ion-card>
       </ion-item>
 
-      <!--ion-item>
-        <ion-card class="center">
-          <ion-card-header></ion-card-header>
-          <ion-card-content class="footer_center">
-            <!--p><img src="assets/appareil-photo-numerique.png" alt="" width="100"></p>
-            <BLOCKQUOTE><p>Ajouter une description</p></BLOCKQUOTE>
-
-          </ion-card-content>
-        </ion-card>
-      </ion-item-->
-      <!--div>
-        <img [src]="image" alt="">
-      </div-->
-
-
-      <!--ion-item>
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="assets/batiment-gouvernemental.png" alt="">
-          </ion-avatar>
-          <ion-label>
-            Entité concernée
-          </ion-label>
-        </ion-item>
-      </ion-item>
-
-      <ion-item>
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="assets/appareil-photo-numerique.png" alt="">
-          </ion-avatar>
-          <ion-label>
-            Photo (Optionnel)
-          </ion-label>
-        </ion-item>
-      </ion-item-->
 
     </ion-list>
 
