@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import{ AlertController} from'@ionic/angular';
  import { Geolocation } from '@capacitor/geolocation';
-<<<<<<< HEAD
  import { IncidentService } from '../../../../../services/incident.service';
  import { Storage } from '@ionic/storage';
  import { HttpClient, HttpHeaders } from '@angular/common/http';
  import { Router } from '@angular/router';
-=======
->>>>>>> 8c994d6a56115fc44a58c42795aad439beab7ece
 
 @Component({
   selector: 'app-step3',
@@ -21,7 +18,7 @@ export class Step3Page implements OnInit {
     lat : 0
   };
 
-<<<<<<< HEAD
+
   incident = {
     title  : '',
     gravite : 0,
@@ -39,9 +36,7 @@ export class Step3Page implements OnInit {
   constructor(public alertController:AlertController, private incidentService: IncidentService, private storage: Storage, private http: HttpClient, private router: Router) {
     this.obtenirPosition();
   }
-=======
-  constructor(public alertController:AlertController) { }
->>>>>>> 8c994d6a56115fc44a58c42795aad439beab7ece
+
 
   ngOnInit() {
   }
@@ -64,26 +59,6 @@ export class Step3Page implements OnInit {
            buttons: ['Ok']
          });
          await alert.present()
-  }
-
-  //const coordinates = await Geolocation.getCurrentPosition();
-  //this.position = Geolocation.getCurrentPosition();
-  //console.log('Latitude: ' + coordinates.coords.latitude);
-  //console.log('Longitude: ' + coordinates.coords.longitude);
-
-  async obtenirPosition() {
-    const position = await Geolocation.getCurrentPosition();
-    console.log('Position actuelle :', position);
-
-    // Vous pouvez maintenant utiliser les données de position pour afficher sur votre vue.
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-
-    this.position.long = longitude;
-    this.position.lat = latitude;
-
-    console.log(this.position);
-    // Faites ce que vous voulez avec les coordonnées.
   }
 
 
