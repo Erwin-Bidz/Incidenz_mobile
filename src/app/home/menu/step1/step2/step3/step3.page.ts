@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import{ AlertController} from'@ionic/angular';
  import { Geolocation } from '@capacitor/geolocation';
+ import { IncidentService } from '../../../../../services/incident.service';
+ import { Storage } from '@ionic/storage';
+ import { HttpClient, HttpHeaders } from '@angular/common/http';
+ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-step3',
@@ -14,7 +18,21 @@ export class Step3Page implements OnInit {
     lat : 0
   };
 
-  constructor(public alertController:AlertController) {
+  incident = {
+    title  : '',
+    gravite : 0,
+    //media : '',
+    //audio : '',
+    type : 0,
+    tel : 0,
+    localisation: '',
+    description : ''
+  }
+
+  description = '';
+  errorMessage = '';
+
+  constructor(public alertController:AlertController, private incidentService: IncidentService, private storage: Storage, private http: HttpClient, private router: Router) {
     this.obtenirPosition();
   }
 
@@ -41,10 +59,6 @@ export class Step3Page implements OnInit {
          await alert.present()
   }
 
-  //const coordinates = await Geolocation.getCurrentPosition();
-  //this.position = Geolocation.getCurrentPosition();
-  //console.log('Latitude: ' + coordinates.coords.latitude);
-  //console.log('Longitude: ' + coordinates.coords.longitude);
 
   async obtenirPosition() {
     const position = await Geolocation.getCurrentPosition();
@@ -58,8 +72,45 @@ export class Step3Page implements OnInit {
     this.position.lat = latitude;
 
     console.log(this.position);
-    // Faites ce que vous voulez avec les coordonnées.
+    // Afficher les coordonnées en longitude et latitude.
   }
+
+  soumissionFormulaire() {
+
+      this.storage.get('newIncident').then((value) => {
+               this.incident.type = value.type;
+               this.incident.gravite = value.danger;
+               this.incident.title = value.title;
+               //this.incident.tel = value.tel;
+               this.incident.description = this.description;
+               this.incident.localisation = '{long: ' + this.position.long + ', lat: ' + this.position.lat + '}'
+
+               this.incidentService.setItem('newIncident', this.incident);
+
+               console.log(this.incident);
+
+               this.http.post('http://localhost:8080/api/incidents/new/', this.incident)
+                       .subscribe(response => {
+                         // Enregistrement réussi, rediriger vers la page de menu
+                         console.log('pendant appel y a quoi?');
+                         this.openDialog();
+                         this.router.navigate(['home/menu']);
+                       }, error => {
+                         // Gestion des erreurs
+                         console.error("Erreur lors du signalement de l'incident: ", error.error);
+                         console.log('pendant erreur appel y a quoi?');
+                         // Afficher un message d'erreur à l'utilisateur
+                         this.errorMessage = "Une erreur s'est produite lors du signalement.";
+                         this.openCancel();
+               });
+
+               console.log('apres appel y a quoi?')
+      });
+
+
+
+
+    }
 
 
 }

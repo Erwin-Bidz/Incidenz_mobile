@@ -33,14 +33,13 @@
 
       <ion-item class="description">
         <ion-label position="floating">Description</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="description"></ion-input>
       </ion-item>
 
       <!--ion-item>
         <ion-card class="center">
           <ion-card-header></ion-card-header>
           <ion-card-content class="footer_center">
-            <!--p><img src="assets/appareil-photo-numerique.png" alt="" width="100"></p>
             <BLOCKQUOTE><p>Ajouter une description</p></BLOCKQUOTE>
 
           </ion-card-content>
@@ -81,7 +80,8 @@
     <ion-card></ion-card>    <ion-card></ion-card>
     <ion-button (click)="openCancel()" class="ion-button-fixed" bottom="200"  size="large" shape="round" expand="block" [routerLink]="['../../../../menu']">Annuler</ion-button>
     <ion-card></ion-card>    <ion-card></ion-card>
-    <ion-button (click)="openDialog()" class="ion-button-fixed" bottom="200" color="bouton" size="large" shape="round" expand="block" [routerLink]="['../../../../menu']">Signaler</ion-button>
+    <!--ion-button (click)="soumissionFormulaire()" class="ion-button-fixed" bottom="200" color="bouton" size="large" shape="round" expand="block" [routerLink]="['../../../../menu']">Signaler</ion-button-->
+    <ion-button (click)="soumissionFormulaire()" class="ion-button-fixed" bottom="200" color="bouton" size="large" shape="round" expand="block">Signaler</ion-button>
   </div>
 
 </ion-content>

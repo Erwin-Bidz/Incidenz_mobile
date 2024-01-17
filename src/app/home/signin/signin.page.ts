@@ -22,11 +22,7 @@ export class SigninPage implements OnInit {
   ngOnInit() {}
 
   inscription() {
-    // console.log("nom:", this.nom);
-    // console.log("prenom:", this.prenom);
-    // console.log("email:", this.email);
-    // console.log("password:", this.password);
-    // console.log("tel:", this.tel);
+
     const infosUtilisateur = {
       nom: this.nom,
       prenom: this.prenom,
