@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import{ AlertController} from'@ionic/angular';
+import { IncidentService } from '../../services/incident.service';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,19 @@ import{ AlertController} from'@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
   password!: string;
   tel!: string;
   errorMessage: string = '';
   token = '';
 
 
-  constructor(private http: HttpClient, private router: Router, public alertController:AlertController) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    public alertController:AlertController,
+    private incidentService: IncidentService
+   ) { }
 
   ngOnInit() {
   }
@@ -32,8 +39,6 @@ export class LoginPage implements OnInit {
     };
 
 
-
-
     if ((!this.tel)||(!this.password)){
       console.log("Champs pas tous remplis");
       this.errorMessage = "Veuillez remplir tous les champs!";
@@ -44,10 +49,9 @@ export class LoginPage implements OnInit {
               (response: HttpResponse<any>) => {
                   console.log(response);
                   const token = response.headers.get('Authorization');
-                  //this.token = JSON.stringify(response.body.token);
                   this.token = response.body.token;
-                  //localStorage.setItem('token', this.token);
                   console.log(this.token);
+                  this.incidentService.setItem('token', this.token);
                   this.openDialog();
                   this.router.navigate(['home/menu', { token: this.token }]);
                   //this.router.navigate(['home/menu']);

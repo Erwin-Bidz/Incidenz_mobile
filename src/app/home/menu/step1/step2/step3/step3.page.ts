@@ -61,6 +61,26 @@ export class Step3Page implements OnInit {
          await alert.present()
   }
 
+  async openMissing() {
+           const alert=await this.alertController.create(
+             {header: 'Veuillez remplir tous les champs',
+             subHeader: '',
+             message: '',
+             buttons: ['Ok']
+           });
+           await alert.present()
+  }
+
+  async openError() {
+             const alert=await this.alertController.create(
+               {header: "Une erreur s'est produite, veuillez réessayer",
+               subHeader: '',
+               message: '',
+               buttons: ['Ok']
+             });
+             await alert.present()
+  }
+
 
   async obtenirPosition() {
     const position = await Geolocation.getCurrentPosition();
@@ -83,7 +103,7 @@ export class Step3Page implements OnInit {
                this.incident.type = value.type;
                this.incident.gravite = value.danger;
                this.incident.title = value.title;
-               //this.incident.tel = value.tel;
+               this.incident.tel = value.tel;
                this.incident.description = this.description;
                this.incident.localisation = '{long: ' + this.position.long + ', lat: ' + this.position.lat + '}'
 
@@ -101,9 +121,16 @@ export class Step3Page implements OnInit {
                          // Gestion des erreurs
                          console.error("Erreur lors du signalement de l'incident: ", error.error);
                          console.log('pendant erreur appel y a quoi?');
-                         // Afficher un message d'erreur à l'utilisateur
-                         this.errorMessage = "Une erreur s'est produite lors du signalement.";
-                         this.openCancel();
+
+                         if(error.error.error == "missing parameters" ){
+                          this.openMissing();
+                          this.errorMessage = "Champs pas tous remplis";
+                         }else{
+                          // Afficher un message d'erreur à l'utilisateur
+                          this.errorMessage = "Une erreur s'est produite lors du signalement.";
+                          this.openError();
+                         }
+
                });
 
                console.log('apres appel y a quoi?')

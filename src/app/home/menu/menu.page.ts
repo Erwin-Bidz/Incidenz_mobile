@@ -26,6 +26,7 @@ export class MenuPage implements OnInit {
           this.username = this.user.nom;
           console.log(this.username);
         });
+        //console.log('infos user: '+this.apiService.getUserInfo());
   }
 
 }
