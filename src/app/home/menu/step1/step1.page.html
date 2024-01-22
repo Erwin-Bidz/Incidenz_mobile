@@ -32,7 +32,8 @@
       <!--ion-item *ngFor="let item of Data" [routerLink]="['step2']"-->
       <ion-item *ngFor="let item of Data" (click)="selectedType(item.nom, item.id)">
         <ion-avatar slot="start">
-          <img [src]="item.image" alt="none">
+          <!--img [src]="item.image" alt="none"-->
+          <img [src]="image_URL" alt="none">
         </ion-avatar>
         <ion-label>
           <h2><b>{{item.nom}}</b></h2>

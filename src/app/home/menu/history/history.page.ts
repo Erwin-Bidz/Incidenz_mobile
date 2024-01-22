@@ -80,7 +80,8 @@ export class HistoryPage implements OnInit {
               this.history = data; console.log(data);
               for (let i = 0; i < this.history.length; i++){
                   //console.log('yes');
-                  this.history[i].createdAt = this.history[i].createdAt.replace(/[TZ]/g, "  ");
+                  this.history[i].createdAt = this.history[i].createdAt.replace(/T/g, " at ").replace(/.000Z/g, "  ");
+                  this.history[i].updatedAt = this.history[i].updatedAt.replace(/T/g, " at ").replace(/.000Z/g, "  ");
               }
            });
           this.readAPI('http://localhost:8080/api/typeIncidents/').subscribe((data2) =>{ this.types = data2; console.log(data2);});
