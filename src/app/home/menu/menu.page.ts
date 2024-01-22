@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../../services/api.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-menu',
@@ -12,11 +13,17 @@ export class MenuPage implements OnInit {
   user : any;
   username = '';
 
-  constructor(public  http: HttpClient, private apiService: ApiService) {
+  constructor(public  http: HttpClient, private apiService: ApiService, private storage: Storage) {
+    this.initDatabase();
     this.getUserInfo();
   }
 
   ngOnInit() {
+  }
+
+  async initDatabase() {
+          await this.storage.create();
+          // La base de données a été créée, vous pouvez maintenant y accéder
   }
 
   getUserInfo() {

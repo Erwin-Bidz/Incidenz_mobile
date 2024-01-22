@@ -20,24 +20,15 @@
 
     <ion-list class="card_center">
 
-      <ion-item>
-        <ion-card class="center" expand="block">
-          <ion-card-header><ion-card-title>Accident de la route</ion-card-title></ion-card-header>
-          <ion-card-content><p>(Pompiers), terminé</p></ion-card-content>
-        </ion-card>
-      </ion-item>
-
-      <ion-item>
-        <ion-card class="center" expand="block">
-          <ion-card-header><ion-card-title>Chute Poteau électrique</ion-card-title></ion-card-header>
-          <ion-card-content><p>(ENEO), pris en compte</p></ion-card-content>
-        </ion-card>
-      </ion-item>
 
       <ion-item  *ngFor="let incident of history">
         <ion-card class="center" expand="block">
-          <ion-card-header><ion-card-title>{{incident.description}}</ion-card-title></ion-card-header>
-          <ion-card-content><p>(CUY), {{incident.etat}}</p></ion-card-content>
+          <ion-card-header><ion-card-title>{{incident.title}}</ion-card-title></ion-card-header>
+          <ion-card-content>
+            <!--p>(CUY), {{incident.etat}}</p-->
+            <p>{{incident.etat}}</p>
+            <p>{{incident.createdAt}}</p>
+          </ion-card-content>
         </ion-card>
       </ion-item>
 

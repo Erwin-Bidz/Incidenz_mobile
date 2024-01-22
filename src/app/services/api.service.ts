@@ -53,6 +53,8 @@ export class ApiService {
 
         console.log('au final on a: ' + headers);
 
+        this.storage.set('headers', headers);
+
         return this.http.get(this.apiUrl + 'users/login/me/', { headers }).pipe(
           catchError(error => {
             console.error("Une erreur s'est produite : ", error);

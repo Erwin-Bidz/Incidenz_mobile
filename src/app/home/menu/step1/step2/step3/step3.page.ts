@@ -5,6 +5,9 @@ import{ AlertController} from'@ionic/angular';
  import { Storage } from '@ionic/storage';
  import { HttpClient, HttpHeaders } from '@angular/common/http';
  import { Router } from '@angular/router';
+import { Observable, from, throwError } from 'rxjs';
+import { switchMap, catchError } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-step3',
@@ -22,12 +25,13 @@ export class Step3Page implements OnInit {
   incident = {
     title  : '',
     gravite : 0,
-    //media : '',
-    //audio : '',
+    media : '',
+    audio : '',
     type : 0,
     tel : 0,
     localisation: '',
-    description : ''
+    description : '',
+    token : ''
   }
 
   description = '';
@@ -35,6 +39,10 @@ export class Step3Page implements OnInit {
 
   constructor(public alertController:AlertController, private incidentService: IncidentService, private storage: Storage, private http: HttpClient, private router: Router) {
     this.obtenirPosition();
+    this.storage.get('token').then((value) => {
+       this.incident.token = value;
+       console.log('le token en constructeur: ' + this.incident.token); // Afficher le type d'incident sélectionné
+    });
   }
 
 
@@ -110,6 +118,35 @@ export class Step3Page implements OnInit {
                this.incidentService.setItem('newIncident', this.incident);
 
                console.log(this.incident);
+
+               /*this.storage.get('headers').then((value) => {
+                    const headers = value
+                    console.log('le headers est: ' + headers); // Afficher le headers
+                    console.log(this.incident);
+
+
+                    this.http.post('http://localhost:8080/api/incidents/new/', this.incident, { headers })
+                             .subscribe(response => {
+                               // Enregistrement réussi, rediriger vers la page de menu
+                               console.log('pendant appel y a quoi?');
+                               this.openDialog();
+                               this.router.navigate(['home/menu']);
+                             }, error => {
+                               // Gestion des erreurs
+                               console.error("Erreur lors du signalement de l'incident: ", error);
+                               console.log('pendant erreur appel y a quoi?');
+
+                               if(error.error.error == "missing parameters" ){
+                                this.openMissing();
+                                this.errorMessage = "Champs pas tous remplis";
+                               }else{
+                                // Afficher un message d'erreur à l'utilisateur
+                                this.errorMessage = "Une erreur s'est produite lors du signalement.";
+                                this.openError();
+                              }
+                    });
+
+               });*/
 
                this.http.post('http://localhost:8080/api/incidents/new/', this.incident)
                        .subscribe(response => {

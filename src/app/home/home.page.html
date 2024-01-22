@@ -30,8 +30,9 @@
     <h2><strong>Mode de Connexion</strong></h2>
     <!--p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p-->
     <p><ion-button [routerLink]="['login']"  color="bouton" size="large" shape="round" expand="block">Utilisateur</ion-button></p>
-    <p><ion-button [routerLink]="['menu']" color="bouton" size="large" shape="round" expand="block">Invité</ion-button></p>
-    
+    <!--p><ion-button [routerLink]="['menu']" color="bouton" size="large" shape="round" expand="block">Invité</ion-button></p-->
+    <p><ion-button (click)="connexionInvite()" color="bouton" size="large" shape="round" expand="block">Invité</ion-button></p>
+
   </div>
 </ion-content>
 
