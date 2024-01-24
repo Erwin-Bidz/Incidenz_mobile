@@ -11,11 +11,15 @@ import { IncidentService } from '../../../services/incident.service';
 export class Step1Page implements OnInit {
 
   Data : any
-  image_URL = 'assets/panneau-casse.png'
+  //image_URL = 'assets/panneau-casse.png'
   //image_URL = 'assets/accident-de-voiture.png'
+  //image_URL = 'assets/incident_type2-removebg-preview.png'
+  image_URL = 'assets/incident_type3.png'
 
   constructor(public  http: HttpClient, private incidentService: IncidentService, private router: Router) {
-    this.readAPI('http://localhost:8080/api/typeIncidents/').subscribe((data) =>{ this.Data = data; console.log(data);});
+    this.readAPI('http://localhost:8080/api/typeIncidents/').subscribe((data) =>{
+      this.Data = data; console.log(data);
+    });
   }
 
   ngOnInit() {
