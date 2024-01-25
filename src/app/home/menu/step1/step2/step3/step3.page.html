@@ -21,11 +21,13 @@
     <ion-list class="card_center">
 
       <ion-item>
-        <ion-card class="center">
+        <ion-card class="center" (click)="obtenirPosition()">
           <ion-card-header><ion-card-title>Position</ion-card-title></ion-card-header>
           <ion-card-content>
-            <p>Votre position devrait s'afficher ici une fois les services disponibles</p>
-            <ion-button (click)="obtenirPosition()">Obtenir Position</ion-button>
+            <!--p>Votre position devrait s'afficher ici une fois les services disponibles</p-->
+            <p>Tapez ici pour obtenir votre position géographique</p>
+            <!--ion-button (click)="obtenirPosition()">Obtenir Position</ion-button-->
+            <p><ion-icon name="location-outline"></ion-icon></p>
             <p>{{position.long}} {{position.lat}}</p>
           </ion-card-content>
         </ion-card>
