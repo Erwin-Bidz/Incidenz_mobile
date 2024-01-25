@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { ApiService } from '../../../services/api.service';
 
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',
@@ -26,6 +27,5 @@ export class SettingsPage implements OnInit {
             console.log(this.user);
             this.id = this.user.id;
           });
-     }
-
+  }
 }
