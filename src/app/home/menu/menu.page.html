@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="header">
+    <ion-title>
+      Hello {{username}}
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!--ion-header-- collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header-->
+
+  <div class="center">
+    <ion-grid class="le_logo">
+      <!--ion-row><p></p></ion-row-->
+      <ion-row>
+        <ion-col size=2></ion-col>
+        <ion-col size=8>
+          <img src="assets/logo2-Incidenz.png" alt="">
+        </ion-col>
+        <ion-col size=2></ion-col>
+      </ion-row>
+    </ion-grid>
+  <!--/div>
+  <div class="center"-->
+    <ion-grid color="bouton">
+      <ion-row>
+        <ion-col>
+          <ion-card color="bouton" class="card" [routerLink]="['step1']">
+            <ion-card-header><p class="card_center"><img src="assets/interruption.png" alt=""  height="100"></p></ion-card-header>
+            <ion-card-content><h3><strong>Signaler un incident</strong></h3></ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size=6>
+          <ion-card color="bouton" class="card" [routerLink]="['history']">
+            <ion-card-header><img src="assets/archiver.png" alt="" height="75" width="75"></ion-card-header>
+            <ion-card-content><h3><strong>Historique</strong></h3></ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size=6>
+          <ion-card color="bouton" class="card" [routerLink]="['settings']">
+            <ion-card-header><img src="assets/parametres.png" alt="" height="75" width="75"></ion-card-header>
+            <ion-card-content><h3><strong>Paramètres</strong></h3></ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>
+
+<!--ion-footer>
+  <p class="footer_center">Copyright © Production ISI 2023-2024</p>
+</ion-footer-->
