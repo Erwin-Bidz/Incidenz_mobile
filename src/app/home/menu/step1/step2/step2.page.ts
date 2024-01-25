@@ -75,7 +75,7 @@ export class Step2Page implements OnInit {
 
   }
 
-  // Fonction permettant de prendre une photo dans la galerie de l'utilisateur
+  // Fonction permettant de prendre une photo
   async takePicture() {
     const image = await Camera.getPhoto({
       quality: 100,
@@ -83,6 +83,9 @@ export class Step2Page implements OnInit {
       resultType: CameraResultType.Base64,
       source: CameraSource.Camera,
     });
+
+    var imageUrl = image.webPath;
+    console.log(imageUrl);
 
     const photo = 'data:image/jpeg;base64,' + image.base64String;
 

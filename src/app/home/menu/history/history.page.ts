@@ -79,7 +79,6 @@ export class HistoryPage implements OnInit {
           this.readAPI('http://localhost:8080/api/incidents/byUser/').subscribe((data) =>{
               this.history = data; console.log(data);
               for (let i = 0; i < this.history.length; i++){
-                  //console.log('yes');
                   this.history[i].createdAt = this.history[i].createdAt.replace(/[TZ]/g, "  ");
               }
            });
@@ -87,7 +86,8 @@ export class HistoryPage implements OnInit {
         }else{
           this.history = [{
             description: "Pour voir les incidents que vous avez signalés, vous devez tout d'abord vous identifier. Cependant, vous ne verez que les incidents que vous aurez signalés étant authentifié.",
-            title: "Pour voir les incidents que vous avez signalés, vous devez tout d'abord vous identifier. Cependant, vous ne verez que les incidents que vous aurez signalés étant authentifié."
+            title: "Pour voir les incidents que vous avez signalés, vous devez tout d'abord vous identifier. Cependant, vous ne verez que les incidents que vous aurez signalés étant authentifié.",
+            etat: "none"
           }]
         }
       });
