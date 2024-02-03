@@ -17,6 +17,8 @@ export class HistoryPage implements OnInit {
   user: any;
   token = '';
 
+  blobImage: string | null = null;
+
 
   constructor(public  http: HttpClient, private apiService: ApiService, private storage: Storage) {
     this.getUserInfo();
@@ -80,6 +82,11 @@ export class HistoryPage implements OnInit {
               this.history = data; console.log(data);
               for (let i = 0; i < this.history.length; i++){
                   this.history[i].createdAt = this.history[i].createdAt.replace(/[TZ]/g, "  ");
+                  //this.loadBlobImage(this.history[i].media);<>
+                  this.loadBlobImage(this.history[i].media).then(url => {
+                        this.history[i].media = url;
+                      });
+                  //this.history[i].media = this.blobImage;
               }
               if(this.history.length==0){
                 this.history = [{
@@ -98,6 +105,18 @@ export class HistoryPage implements OnInit {
           }]
         }
       });
+   }
+
+   /*async loadBlobImage(URL_IMAGE_EN_BLOB: string) {
+       const response = await fetch(URL_IMAGE_EN_BLOB);
+       const blob = await response.blob();
+       this.blobImage = URL.createObjectURL(blob);
+   }*/
+
+   async loadBlobImage(url: string): Promise<string> {
+     const response = await fetch(url);
+     const blob = await response.blob();
+     return URL.createObjectURL(blob);
    }
 
 }

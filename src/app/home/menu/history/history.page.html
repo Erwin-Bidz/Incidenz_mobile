@@ -29,6 +29,7 @@
             <ion-card-header><ion-card-title>{{incident.title}}</ion-card-title></ion-card-header>
             <ion-card-content>
               <!--p>(CUY), {{incident.etat}}</p-->
+              <img [src]="incident.media" alt="image_incident">
               <p >{{incident.etat}}</p>
               <p>{{incident.createdAt}}</p>
             </ion-card-content>

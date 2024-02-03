@@ -44,10 +44,20 @@
 
 
       <ion-item>
-        <ion-card *ngIf="photo; else noData" class="center" (click)="takePicture()">
+        <!--ion-card *ngIf="incident.media; else noData" class="center" (click)="takePicture()">
           <ion-card-header></ion-card-header>
           <ion-card-content class="footer_center">
-            <p><img *ngIf="previewPhoto" [src]="previewPhoto" alt="Preview"></p>
+            <!--p><img *ngIf="previewPhoto" [src]="previewPhoto" alt="Preview"></p>
+            <img [src]="incident.media" *ngIf="incident.media" alt="Photo prise">
+            <BLOCKQUOTE><p>Ajouter une photo</p></BLOCKQUOTE>
+          </ion-card-content>
+        </ion-card-->
+
+        <ion-card *ngIf="imgSource; else noData" class="center" (click)="takePicture()">
+          <ion-card-header></ion-card-header>
+          <ion-card-content>
+            <!--p><img *ngIf="previewPhoto" [src]="previewPhoto" alt="Preview"></p-->
+            <img [src]="imgSource" alt="Photo prise">
             <BLOCKQUOTE><p>Ajouter une photo</p></BLOCKQUOTE>
           </ion-card-content>
         </ion-card>

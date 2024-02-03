@@ -18,15 +18,15 @@ import{ AlertController} from'@ionic/angular';
 export class Step3Page implements OnInit {
 
   position = {
-    long : 0,
-    lat : 0
+    long : 1,
+    lat : 1
   };
 
 
   incident = {
     title  : '',
     gravite : 0,
-    media : '',
+    media : null,
     audio : '',
     type : 0,
     tel : 0,
@@ -90,6 +90,16 @@ export class Step3Page implements OnInit {
              await alert.present()
   }
 
+  async openLocalisationError() {
+               const alert=await this.alertController.create(
+                 {header: "Localisation non fournie",
+                 subHeader: '',
+                 message: "Connectez vous à Internet pour fixer la localisation de l'incident, et réessayez",
+                 buttons: ['Ok']
+               });
+               await alert.present()
+    }
+
 
   async obtenirPosition() {
     const position = await Geolocation.getCurrentPosition();
@@ -151,7 +161,10 @@ export class Step3Page implements OnInit {
 
                });*/
 
-               this.http.post('http://localhost:8080/api/incidents/new/', this.incident)
+               if (this.position.long==0 && this.position.lat==0){
+                this.openLocalisationError();
+               }else{
+                  this.http.post('http://localhost:8080/api/incidents/new/', this.incident)
                        .subscribe(response => {
                          // Enregistrement réussi, rediriger vers la page de menu
                          console.log('pendant appel y a quoi?');
@@ -171,9 +184,10 @@ export class Step3Page implements OnInit {
                           this.openError();
                          }
 
-               });
+                       });
+               }
 
-               console.log('apres appel y a quoi?')
+               //console.log('apres appel y a quoi?')
       });
 
 

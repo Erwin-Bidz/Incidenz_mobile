@@ -23,14 +23,17 @@ export class Step2Page implements OnInit {
   user : any;
   idType = 0;
 
+  imgSource : any;
+
   incident = {
     title  : '',
     gravite : 0,
-    media : '',
+    media : null,
     audio : '',
     type : 0,
     tel : 0
   }
+
 
   dangerosite : number = 1;
 
@@ -65,7 +68,8 @@ export class Step2Page implements OnInit {
              this.incident.tel = this.idType;
              this.incident.gravite = this.dangerosite;
              this.incident.title = this.typeIncident + '.' + this.incident.gravite + '.' + this.incident.type;
-             //this.incident.media = this.photo;
+             this.incident.media = this.imgSource;
+
 
              this.incidentService.setItem('newIncident', this.incident);
 
@@ -76,13 +80,22 @@ export class Step2Page implements OnInit {
   }
 
   // Fonction permettant de prendre une photo
-  async takePicture() {
+  /*async takePicture() {
     const image = await Camera.getPhoto({
       quality: 100,
       allowEditing: false,
       resultType: CameraResultType.Base64,
       source: CameraSource.Camera,
     });
+
+    // Convertir les données de l'image en format base64 en une chaîne et les affecter à l'objet 'image'
+    if (image.base64String !== undefined) {
+        this.incident.media = image.base64String;
+        this.incidentService.setItem('imageIncident', image.base64String);
+      } else {
+        console.error('Erreur : image.base64String est undefined');
+      }
+    console.log('we have: '+this.incident.media);
 
     var imageUrl = image.webPath;
     console.log(imageUrl);
@@ -116,6 +129,19 @@ export class Step2Page implements OnInit {
     // Afficher l'URI de la photo sauvegardée dans la console
     console.log('Photo saved at:', savedPhoto.uri);
     this.incident.media = this.photo;
+  }*/
+
+  takePicture = async () => {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Prompt
+      });
+
+      this.imgSource = image.dataUrl;
+      console.log('image: '+this.imgSource);
   }
+
 
 }
